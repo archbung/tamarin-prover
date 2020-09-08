@@ -24,7 +24,7 @@ single:
 .PHONY: profiling
 profiling:
 	stack setup
-	stack install --no-system-ghc --executable-profiling --library-profiling --ghc-options="-fprof-auto -rtsopts" --flag tamarin-prover:-threaded
+	stack build --system-ghc --executable-profiling --library-profiling --ghc-options="-fprof-auto -rtsopts" --flag tamarin-prover:-threaded
 
 # SAPIC
 .PHONY: sapic
