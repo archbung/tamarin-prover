@@ -1,8 +1,15 @@
-# Model A
+TLS 1.3.
+---
+
+Needs m4 and perl
+
+The following are result of running `bench.sh`
+
+## Model A
 
 No record, zero_rtt, post_hs, adversary
 
-## prev_
+### prev_
 57k
 
 1898644
@@ -11,7 +18,7 @@ No record, zero_rtt, post_hs, adversary
 1872732
 1914976
 
-## p_
+### p_
 53k
 
 1694804
@@ -21,11 +28,11 @@ No record, zero_rtt, post_hs, adversary
 1806288
 
 
-# Model B
+## Model B
 
 No zero_rtt, post_hs, adversary
 
-## prev_
+### prev_
 57k
 
 1847304
@@ -34,7 +41,7 @@ No zero_rtt, post_hs, adversary
 1908632
 1785736
 
-## p_
+### p_
 53k
 
 1881004
@@ -44,11 +51,11 @@ No zero_rtt, post_hs, adversary
 1842284
 
 
-# Model C
+## Model C
 
 No post_hs, adversary
 
-## prev_
+### prev_
 58k
 
 1835172
@@ -57,7 +64,7 @@ No post_hs, adversary
 1973148
 1873884
 
-## p_
+### p_
 54k
 
 1752236
@@ -67,11 +74,11 @@ No post_hs, adversary
 1913840
 
 
-# Model D
+## Model D
 
 No record, zero_rtt, post_hs
 
-## prev_
+### prev_
 57k
 
 Command exited with non-zero status 137
