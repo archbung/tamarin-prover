@@ -1,8 +1,8 @@
-{-# LANGUAGE PatternGuards #-}
-{-# LANGUAGE QuasiQuotes   #-}
-{-# LANGUAGE TupleSections #-}
+{-# LANGUAGE PatternGuards    #-}
+{-# LANGUAGE QuasiQuotes      #-}
+{-# LANGUAGE TupleSections    #-}
 -- FIXME: for functions prefixedShowDot
-{-# LANGUAGE FlexibleContexts           #-}
+{-# LANGUAGE FlexibleContexts #-}
 {- |
 Module      :  Web.Theory
 Description :  Pretty-printing security protocol theories into HTML code.
@@ -76,7 +76,7 @@ import           System.Process
 
 import           Logic.Connectives
 import           Theory
-import           Theory.Constraint.System.Dot (nonEmptyGraph,nonEmptyGraphDiff)
+import           Theory.Constraint.System.Dot (nonEmptyGraph, nonEmptyGraphDiff)
 import           Theory.Text.Pretty
 import           Theory.Tools.Wellformedness
 
@@ -203,7 +203,7 @@ preformatted :: HtmlDocument d => Maybe String -> d -> d
 preformatted cl = withTag "div" [("class", classes cl)]
   where
     classes (Just cls) = "preformatted " ++ cls
-    classes (Nothing) = "preformatted"
+    classes (Nothing)  = "preformatted"
 
 -- | Render a proof index relative to a theory path constructor.
 proofIndex :: HtmlDocument d
@@ -741,7 +741,7 @@ htmlSource :: HtmlDocument d
                     => RenderUrl -> TheoryIdx -> SourceKind -> (Int, Source) -> d
 htmlSource renderUrl tidx kind (j, th) =
     if null cases
-      then withTag "h2" [] ppHeader $-$ withTag "h3" [] (text "No cases.")
+      then withTag "h2" [] ppHeader $-$ withTag "h3" [("style","color:red")] (text "WARNING: Possible specification errors.")
       else vcat $ withTag "h2" [] ppHeader : cases
   where
     cases    = concatMap ppCase $ zip [1..] $ getDisj $ get cdCases th
@@ -769,7 +769,7 @@ htmlSourceDiff :: HtmlDocument d
                     => RenderUrl -> TheoryIdx -> Side -> SourceKind -> Bool -> (Int, Source) -> d
 htmlSourceDiff renderUrl tidx s kind d (j, th) =
     if null cases
-      then withTag "h2" [] ppHeader $-$ withTag "h3" [] (text "No cases.")
+      then withTag "h2" [] ppHeader $-$ withTag "h3" [("style", "color:red")] (text "WARNING: Possible specification errors.")
       else vcat $ withTag "h2" [] ppHeader : cases
   where
     cases    = concatMap ppCase $ zip [1..] $ getDisj $ get cdCases th
@@ -1548,7 +1548,7 @@ nextDiffThyPath thy = go
       | Just nextPath <- getNextPath s l p = DiffTheoryProof s l nextPath
       | Just nextLemma <- getNextLemma s l = DiffTheoryProof s nextLemma []
       | s == LHS = case lemmas RHS of
-                     []  -> firstDiffLemma
+                     []   -> firstDiffLemma
                      l':_ -> (DiffTheoryProof RHS (fst l') [])
       | s == RHS = firstDiffLemma
       | otherwise  = DiffTheoryProof s l p
@@ -1567,7 +1567,7 @@ nextDiffThyPath thy = go
     diffLemmas = map (\l -> (get lDiffName l, l)) $ diffTheoryDiffLemmas thy
     firstLemma = case lemmas LHS of
                   []  -> case lemmas RHS of
-                             []   -> Nothing
+                             []  -> Nothing
                              l:_ -> Just (DiffTheoryProof RHS (fst l) [])
                   l:_ -> Just (DiffTheoryProof LHS (fst l) [])
 
