@@ -1,0 +1,69 @@
+cabal-version: 1.12
+
+-- This file has been generated from package.yaml by hpack version 0.34.2.
+--
+-- see: https://github.com/sol/hpack
+
+name:           tamarin-prover-macro
+version:        0.1.0.0
+description:    Please see the README on GitHub at <https://github.com/archbung/tamarin-prover-macro#readme>
+homepage:       https://github.com/archbung/tamarin-prover-macro#readme
+bug-reports:    https://github.com/archbung/tamarin-prover-macro/issues
+author:         Hizbullah Abdul Aziz Jabbar
+maintainer:     archbung@gmail.com
+copyright:      Copyright (c) 2020 Hizbullah Abdul Aziz Jabbar
+license:        BSD3
+license-file:   LICENSE
+build-type:     Simple
+extra-source-files:
+    README.md
+    ChangeLog.md
+
+source-repository head
+  type: git
+  location: https://github.com/archbung/tamarin-prover-macro
+
+library
+  exposed-modules:
+      Macro
+      Token
+  other-modules:
+      Paths_tamarin_prover_macro
+  hs-source-dirs:
+      src
+  build-depends:
+      base >=4.7 && <5
+    , containers
+    , parsec
+  default-language: Haskell2010
+
+executable tamarin-prover-macro-exe
+  main-is: Main.hs
+  other-modules:
+      Paths_tamarin_prover_macro
+  hs-source-dirs:
+      app
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      base >=4.7 && <5
+    , containers
+    , parsec
+    , tamarin-prover-macro
+  default-language: Haskell2010
+
+test-suite tamarin-prover-macro-test
+  type: exitcode-stdio-1.0
+  main-is: Spec.hs
+  other-modules:
+      MacroSpec
+      Paths_tamarin_prover_macro
+  hs-source-dirs:
+      test
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      base >=4.7 && <5
+    , containers
+    , hspec
+    , parsec
+    , tamarin-prover-macro
+  default-language: Haskell2010
